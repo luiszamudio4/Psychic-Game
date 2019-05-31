@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic Game</title>
+</head>
+<body>
+    <h1>The Psychic Game</h1>
+    <p>Guess what letter I'm thinking of</p>
+    <p>Wins:</p>
+    <p>Loses:</p>
+    <p>Guesses Left:</p>
+    <p>Your Guesses so far:</p>
+
+    <script type="text/javascript">
+
+        // Creates an array that lists out all of the options (a-z).
+        var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        var userScore = 0;
+        var compScore = 0;
+        var CntDown = 9;
+        var userGuess = 0;
+     
+        // This function is run whenever the user presses a key. Also the start of an entire block of code:
+        document.onkeyup = function(event) {
+     
+          // event.key is the key that the user pressed.
+          var userGuess = event.key;
+     
+          if(computerChoices.indexOf(userGuess.toLowerCase()) < 0){
+            alert("Letter keys only!")} else{
+            // Randomly chooses a choice from the options array. This is the Computer's guess:
+              var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];  //math.floor rounds down...this code lets you pick a random index within an array
+        //console log computer choice?
+     
+     
+              //Scoring Rules (&& means "and")
+              if (userGuess === computerGuess){
+                userScore++;
+                alert("You won!");
+              }
+     
+              else {
+                CntDown;          //Add in Until 0, then Loses++
+                userGuess;
+            }
+     
+            //getElementById connects the JS var ex) var userGuess to the HTML <h2> text id=userGuessText
+            document.getElementById("winText").innerText = userScore;
+            document.getElementById("lossesText").innerText = compScore;
+            document.getElementById("guessesLeftText").innerText = CntDown;
+            document.getElementById("guessesSoFarText").innerText = userGuess;
+          }
+        };
+      </script>
+</body>
+</html>
